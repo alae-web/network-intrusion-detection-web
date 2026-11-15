@@ -1,0 +1,1236 @@
+/* ==========================================================================
+   1. RESET & GLOBALS
+   ========================================================================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #070f1c; /* Votre bleu sombre d'origine */
+    color: #e6edf3;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. LAYOUT & CONTAINERS
+   ========================================================================== */
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section{
+    padding: 110px 0;
+}
+
+/* ==========================================================================
+   3. NAVBAR
+   ========================================================================== */
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 16px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(7, 15, 28, 0.55);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 1000;
+    transition: 0.4s ease;
+}
+
+.navbar.scrolled{
+    padding: 12px 60px;
+    background: rgba(7, 15, 28, 0.85);
+}
+
+.logo{
+    font-size: 20px;
+    font-weight: 600;
+    color: #93c5fd;
+    letter-spacing: 1px;
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar a:hover{
+    color: #93c5fd;
+}
+
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: url("/static/detector/images/analyste-cyber.png");
+    background-size: cover;
+    background-position: center right;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(7, 15, 28, 0.95),
+        rgba(7, 15, 28, 0.70),
+        rgba(147, 197, 253, 0.10)
+    );
+    z-index: 0;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero h1{
+    font-size: 62px;
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.hero p{
+    color: #94a3b8;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* COMPOSANTS HERO */
+.badge{
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: rgba(147, 197, 253, 0.08);
+    border: 1px solid rgba(147, 197, 253, 0.2);
+    color: #93c5fd;
+    font-size: 12px;
+}
+
+.btn{
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background: #93c5fd;
+    color: #070f1c;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    background: #a5d8ff;
+}
+
+/* ==========================================================================
+   5. TITLES & COMMONS
+   ========================================================================== */
+.section-title{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2{
+    font-size: 42px;
+    color: #e6edf3;
+}
+
+.section-title p{
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   6. ABOUT SECTION
+   ========================================================================== */
+.about-section{
+    background: #0b1524;
+}
+
+.about-banner{
+    height: 260px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: url("/static/detector/images/about.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.about-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-overlay h2{
+    font-size: 44px;
+}
+
+.about-overlay p{
+    color: #94a3b8;
+}
+
+.about-intro{
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.about-intro h3{
+    font-size: 28px;
+}
+
+.about-intro p{
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+/* CARDS ABOUT */
+.about-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.about-card{
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 28px;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.about-card:hover{
+    transform: translateY(-6px);
+    border-color: rgba(147, 197, 253, 0.3);
+}
+
+.about-card h4{
+    color: #e6edf3;
+    margin-bottom: 10px;
+}
+
+.about-card p{
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   7. DETECTOR (ANCIENNE INTERFACE SI UTILISÉE ACCESSOIREMENT)
+   ========================================================================== */
+#detector{
+    background: #071321;
+}
+
+.predict-section{
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+}
+
+.predict-left,
+.predict-right{
+    background: #0f1d2d;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+input,
+textarea{
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #16283d;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.detect-btn{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #93c5fd;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sample-section{
+    background: #0f1d2d;
+    padding: 28px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.sample-btn{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #16283d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sample-btn:hover{
+    background: #93c5fd;
+    color: #071321;
+}
+
+.result-card{
+    height: 200px;
+    background: #16283d;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   8. AI TOOL SECTION (STYLE GPTZERO - THÈME SOMBRE HÔTE)
+   ========================================================================== */
+.ai-tool {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #070f1c; /* Cohérence parfaite avec votre fond de site */
+    padding: 120px 20px;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* --- BLOC INFOS DE GAUCHE --- */
+.tool-header {
+    text-align: left;
+}
+
+.tool-header h2 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #e6edf3;
+    letter-spacing: -1px;
+}
+
+/* Le texte vert "what's human" */
+.tool-header h2 span {
+    color: #10b981; /* Vert épuré identique à GPTZero */
+}
+
+.tool-header p {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-top: 25px;
+    max-width: 490px;
+}
+
+/* COMPTEURS / STATISTIQUES */
+.tool-stats {
+    display: flex;
+    gap: 45px;
+    margin-top: 45px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #e6edf3;
+}
+
+.stat-number.green {
+    color: #10b981; /* Vert pour le taux de précision */
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* --- BLOC CONSOLE BLANCHE (CONSERVE LE DESIGN CIBLE) --- */
+.tool-panel {
+    background: #ffffff; 
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6); /* Ombre forte pour détacher le boitier blanc */
+    color: #1e293b;
+}
+
+/* Sélecteurs d'onglets (AI Detector / Hallucination) */
+.tool-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+/* Onglet actif */
+.tab-btn.active {
+    background: #ffffff;
+    color: #1e293b;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Zone de saisie interne */
+.tool-panel textarea {
+    width: 100%;
+    height: 250px;
+    background: transparent;
+    border: none;
+    color: #1e293b;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    margin-bottom: 0; /* Override de la marge globale */
+}
+
+.tool-panel textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Boutons secondaires d'envoi de fichiers */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.secondary-btn:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+/* ==========================================================================
+   9. SHOWCASE & FOOTER
+   ========================================================================== */
+.detector-showcase{
+    position: relative;
+    min-height: 850px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showcase-bg{
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+}
+/* ================= AI TOOL UPDATED (CYBER PRO STYLE) ================= */
+
+.ai-tool {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #070f1c;
+    padding: 120px 20px;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* LEFT TEXT */
+.tool-header h2 {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #e6edf3;
+}
+
+.tool-header h2 span {
+    color: #91b8f7; /* BLUE clean */
+}
+
+.tool-header p {
+    margin-top: 25px;
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+/* RIGHT PANEL (NO HEAVY BORDER → FLUID STYLE) */
+.tool-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 22px;
+    padding: 30px;
+    backdrop-filter: blur(18px);
+    transition: 0.3s ease;
+}
+
+.tool-panel:hover {
+    transform: translateY(-5px);
+}
+
+/* TEXTAREA */
+.tool-panel textarea {
+    width: 100%;
+    height: 180px;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    background: #0f1d2d;
+    color: white;
+    outline: none;
+    resize: none;
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.secondary-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover {
+    background: #91b8f7;
+    color: white;
+}
+
+/* RESULT AREA */
+.result-box {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* CIRCLE */
+.result-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.08);
+    stroke-width: 10;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: #3a5887; /* BLUE */
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 326;
+    stroke-dashoffset: 326;
+    transition: 1.5s ease;
+}
+
+/* TEXT INSIDE CIRCLE */
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.circle-text span {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e6edf3;
+}
+
+.circle-text small {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+/* RIGHT TEXT NEXT TO CIRCLE */
+.result-text h4 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #91b8f7;
+}
+
+.result-text p {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* HOVER PRO */
+.tool-panel:hover .ring-progress {
+    stroke-dashoffset: 80;
+}
+/* ==========================================================================
+   ANIMATION REVEAL (GESTION DES FLOUES ET GLISSEMENT AU DÉFILEMENT)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+    will-change: transform, opacity, filter;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+
+}
+/* ==========================================================================
+   INTERFACES DE CONTACT PROFESSIONNEL 
+   ========================================================================== */
+.contact-section {
+    background: #0b1524; /* Léger contraste par rapport au fond body */
+    padding: 120px 0;
+}
+
+/* Grille principale à deux colonnes */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    margin-top: 50px;
+    align-items: start;
+}
+
+/* --- INFOS DE GAUCHE --- */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s ease;
+}
+
+.info-card:hover {
+    border-color: rgba(147, 197, 253, 0.2);
+    background: rgba(147, 197, 253, 0.02);
+    transform: translateX(5px);
+}
+
+.info-icon {
+    font-size: 24px;
+    background: rgba(147, 197, 253, 0.08);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(147, 197, 253, 0.15);
+}
+
+.info-text h4 {
+    font-size: 16px;
+    color: #e6edf3;
+    font-weight: 600;
+}
+
+.info-text p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+/* --- FORMULAIRE DE DROITE --- */
+.contact-form {
+    background: #0f1d2d;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #93c5fd; /* Rappel du bleu clair de votre logo */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Inputs & Textarea stylisés */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #16283d; /* Même couleur que votre panneau applicatif d'origine */
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 0; /* Suppression des marges forcées globales */
+}
+
+.contact-form textarea {
+    height: 140px;
+    resize: none;
+}
+
+/* Effet lumineux Premium au Focus (Clic sur le champ) */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.15);
+    background: #1b2f47;
+}
+
+/* Bouton Soumettre Large et Pro */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   AJUSTEMENT DU RESPONSIVE CONTACT
+   ========================================================================== */
+@media(max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-form {
+        padding: 30px 20px;
+    }
+}
+.action-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+/* =========================
+   FILE UPLOAD BUTTON
+   ========================= */
+
+#file-input{
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #cbd5e1;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+#file-input:hover{
+    border-color: #91b8f7;
+    background: rgba(145,184,247,0.08);
+}
+
+/* Bouton natif du sélecteur fichier */
+
+#file-input::file-selector-button{
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    margin-right: 12px;
+    background: #91b8f7;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#file-input::file-selector-button:hover{
+    background: #739de8;
+}
+
+
+/* =========================
+   RUN ANALYSIS BUTTON
+   ========================= */
+
+.run-btn{
+    flex: 1;
+    background: linear-gradient(
+        135deg,
+        #91b8f7,
+        #3a5887
+    );
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.run-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(58,88,135,0.4);
+}
+
+.run-btn:active{
+    transform: translateY(0);
+}
+
+.run-btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.action-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+.secondary-btn{
+    flex:1;
+    height:48px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+    color:#cbd5e1;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+    text-decoration:none;
+}
+
+.secondary-btn:hover{
+    background:rgba(255,255,255,0.06);
+    border-color:rgba(255,255,255,0.15);
+}
+
+.file-btn{
+    user-select:none;
+}
+.circle-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: inline-block;
+}
+
+.circle-text {
+    position: absolute;
+    color: #e2e8f0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+#progress-bar {
+    transition: stroke-dashoffset 0.8s ease-in-out; /* Animation fluide de remplissage */
+}
+/* Gère l'alignement horizontal global */
+.analysis-actions-row {
+    display: flex;
+    align-items: center;  /* Aligne verticalement les éléments au centre */
+    gap: 16px;            /* Espace uniforme entre chaque élément */
+    flex-wrap: wrap;      /* Permet de passer à la ligne sur petit écran */
+}
+
+/* Style de la boîte d'affichage du fichier pour matcher avec vos boutons */
+#file-info-container {
+    display: none;        /* Sera modifié en 'display: flex' par le JS */
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;   /* Même hauteur que vos boutons */
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid #1e293b;
+    border-radius: 12px;  /* Même arrondi que vos boutons */
+    height: 50px;         /* Ajustez selon la hauteur exacte de vos boutons */
+    box-sizing: border-box;
+}
+
+#file-name-text {
+    color: #cbd5e1;
+    font-size: 15px;
+    font-family: monospace;
+}
+.dashboard-counters {
+    display: flex;
+    gap: 16px;
+}
+.kpi-card {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+}
+.kpi-title {
+    font-size: 11px;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.kpi-card h2 {
+    font-size: 28px;
+    margin: 8px 0;
+    font-weight: 700;
+}
+.kpi-subtext {
+    font-size: 12px;
+    color: #64748b;
+}
+.border-danger {
+    border-left: 4px solid #ef4444;
+}
+.text-danger {
+    color: #ef4444;
+}
+/* ==========================================================================
+   DESIGN SOC ULTRA-PRO POUR SOUTENANCE - CYBERSENTINEL 
+   ========================================================================== */
+
+.soc-dashboard-wrapper {
+    width: 100%;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #e2e8f0;
+    margin-bottom: 60px;
+}
+
+/* --- GRILLE DES STATISTIQUES (KPIs) --- */
+.soc-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.soc-card {
+    position: relative;
+    background: #090d16;
+    border: 1px solid rgba(51, 65, 85, 0.4);
+    border-radius: 12px;
+    padding: 22px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soc-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.soc-card.alert-active {
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+.soc-card.alert-active:hover {
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.soc-meta {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 1.5px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.soc-value {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 6px 0;
+    letter-spacing: -0.5px;
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+}
+
+.soc-subtext {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Couleurs des Textes KPIs */
+.text-red { color: #f87171 !important; }
+.text-green { color: #4ade80 !important; }
+.text-purple { color: #8490fc !important; }
+
+/* --- CONTENEUR DU TABLEAU --- */
+.soc-table-container {
+    background: #090d16;
+    border: 1px solid rgba(51, 65, 85, 0.4);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.soc-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.2);
+    padding-bottom: 15px;
+}
+
+.soc-title-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.soc-title-area h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 0;
+}
+
+/* Indicateur Clignotant Live (Effet Réseau Actif) */
+.pulse-indicator {
+    width: 9px;
+    height: 9px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* --- LOGIQUE DE LA TABLE EXPERTE --- */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.soc-expert-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+}
+
+.soc-expert-table th {
+    padding: 14px 16px;
+    color: #475569;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+}
+
+.soc-expert-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.2);
+    vertical-align: middle;
+}
+
+/* Animation d'injection d'une nouvelle ligne en haut du tableau */
+.soc-expert-table tbody tr {
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+    0% {
+        background: rgba(59, 130, 246, 0.15); /* Flash bleu subtil à l'insertion */
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    100% {
+        background: transparent;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.soc-expert-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* --- BADGES ET TYPOGRAPHIES CYBER --- */
+.terminal-txt {
+    font-family: 'SF Mono', Consolas, monospace;
+    color: #cbd5e1;
+    background: #141f32;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.asset-txt {
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+.time-txt {
+    color: #64748b;
+    font-family: 'SF Mono', monospace;
+}
+
+.score-txt {
+    font-family: 'SF Mono', monospace;
+    font-weight: 700;
+}
+.score-txt.high { color: #f87171; }
+.score-txt.low { color: #4ade80; }
+
+/* Attack Classification Badges */
+.attack-type-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+.attack-type-badge.dos { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
+.attack-type-badge.probe { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.25); }
+.attack-type-badge.r2l { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.25); }
+.attack-type-badge.u2r { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.25); }
+.attack-type-badge.normal { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); }
+
+/* Severity Level Badges */
+.sev-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+.sev-badge.high { background: #5c1d1d; color: #fca5a5; }
+.sev-badge.mid { background: #5c3e1d; color: #fde68a; }
+.sev-badge.low { background: #144633; color: #a7f3d0; }

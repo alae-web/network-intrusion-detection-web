@@ -1,0 +1,463 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSentinel - AI Intrusion Detection</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">CyberSentinel</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#detector">AI Detector</a></li>
+            <li><a href="#contact">dashboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME -->
+<section class="hero reveal" id="home">
+        <div class="container hero-content">
+
+<div class="hero-text reveal">
+                <span class="badge">
+                    AI SECURITY PLATFORM
+                </span>
+
+                <h1>
+                    AI-Powered Intrusion Detection System
+                </h1>
+
+                <p>
+                    Protect your network using advanced Machine Learning
+                    algorithms capable of detecting cyber threats and
+                    suspicious activities in real time.
+                </p>
+
+<a href="#detector" class="btn reveal">                    Start Detection
+                </a>
+
+            </div>
+
+            
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <!-- ABOUT -->
+<section id="about" class="about-section reveal">
+
+    <div class="container">
+
+        <!-- BANNER IMAGE -->
+        <div class="about-banner reveal">
+            <div class="about-overlay">
+                <h2>ABOUT US</h2>
+                <p>AI-Powered Intrusion Detection System</p>
+            </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="about-intro reveal">
+            <h3>Who We Are</h3>
+            <p>
+                CyberSentinel is an intelligent cybersecurity platform designed to detect,
+                analyze, and prevent network intrusions using advanced Machine Learning models.
+                Our system continuously monitors network traffic to identify anomalies,
+                malicious behaviors, and cyber threats in real time.
+            </p>
+        </div>
+
+        <!-- CARDS -->
+        <!-- CARDS -->
+<div class="about-cards">
+
+    <div class="about-card reveal">
+        <h4>Real-Time Protection</h4>
+        <p>
+            Continuous monitoring of network traffic with instant detection of suspicious activities.
+        </p>
+    </div>
+
+    <div class="about-card reveal">
+        <h4>AI-Powered Analysis</h4>
+        <p>
+            Machine learning models trained to identify complex intrusion patterns and anomalies.
+        </p>
+    </div>
+
+    <div class="about-card reveal">
+        <h4>Advanced Security</h4>
+        <p>
+            Protection against modern cyber threats including DoS, Probe, R2L, and unknown attacks.
+        </p>
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+        <!-- DETECTOR -->
+    <section class="ai-tool" id="detector">
+        <div class="bg-blobs"></div>
+
+        <div class="container tool-grid">
+
+            <!-- LEFT SIDE (TEXT) - AJOUT REVEAL -->
+            <div class="tool-header reveal">
+                <h2>
+                    AI Intrusion Detector made to<br>
+                    <span>protect modern networks.</span>
+                </h2>
+
+                <p>
+                    CyberSentinel uses machine learning models to detect
+                    malicious traffic, anomalies, and cyber attacks in real time.
+                    Analyze your network data instantly with high accuracy AI models.
+                </p>
+
+                <!-- STATS AJOUTÉES ICI POUR MATCH AVEC L'IMAGE D'ORIGINE -->
+                
+            </div>
+
+            <!-- RIGHT SIDE (APP + RESULT CIRCLE) - AJOUT REVEAL -->
+            <div class="tool-panel reveal">
+
+                <textarea id="network-data" placeholder="Paste network logs or traffic data..."></textarea>
+
+                <div class="action-buttons">
+<!-- Zone d'affichage du nom du fichier sélectionné -->
+<!-- Conteneur principal pour tout aligner sur une seule ligne -->
+<div class="analysis-actions-row">
+    
+    <!-- Zone d'affichage (Masquée par défaut, apparaît au changement) -->
+    <div id="file-info-container">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+            <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="#1e293b" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14 2V8H20" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round"/>
+            <text x="7" y="17" fill="#3b82f6" font-size="6px" font-weight="bold" font-family="Arial">CSV</text>
+        </svg>
+        <span id="file-name-text">Classeur2.csv</span>
+    </div>
+
+</div>
+
+
+    <input type="file" id="file-input" accept=".csv" hidden>
+
+    <label for="file-input" class="secondary-btn file-btn">
+        Upload CSV
+    </label>
+
+    <button id="run-analysis" class="secondary-btn run-btn">
+        Run analysis
+    </button>
+<!-- Nom du fichier -->
+    <span id="file-name-text" style="color: #cbd5e1; font-size: 14px; font-family: monospace;"></span>
+</div>
+
+                <!-- RESULT SECTION (CIRCLE) -->
+                <div class="result-box">
+                    <div class="circle-container">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+        <!-- Cercle de fond (Gris/Bleu foncé) -->
+        <circle class="circle-bg" cx="80" cy="80" r="70" stroke="#1e293b" stroke-width="12" fill="transparent"/>
+        <!-- Cercle de progression dynamique -->
+        <circle id="progress-bar" cx="80" cy="80" r="70" stroke="#3b82f6" stroke-width="12" fill="transparent"
+                stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" transform="rotate(-90 80 80)"/>
+    </svg>
+    <div class="circle-text">
+        <h2 id="score">0%</h2>
+        <p>Threat<br>probability</p>
+    </div>
+</div>
+
+
+                    <div class="result-text">
+                        <h4>AI DETECTION</h4>
+                        <p>Made for cybersecurity analysis</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <!-- DASHBOARD CYBER SENTINEL SOC -->
+<div class="soc-dashboard-wrapper reveal" id="prediction-history" style="display: none; margin-top: 45px; width: 100%;">
+    
+    <!-- LES METRICS DU SOC (Mises à jour dynamiquement) -->
+    <div class="soc-kpi-grid">
+       
+        <div class="soc-card alert-active">
+            <span class="soc-meta text-red">ANOMALIES DETECTED</span>
+            <div class="soc-value text-red" id="kpi-anomalies">0</div>
+            <span class="soc-subtext">Malicious Vectors Isolated</span>
+        </div>
+        <div class="soc-card">
+            <span class="soc-meta">MODEL RECALL</span>
+            <div class="soc-value text-green">99.12%</div>
+            <span class="soc-subtext">True Positive Detection Rate</span>
+        </div>
+        <div class="soc-card">
+            <span class="soc-meta">FALSE POSITIVE RATE</span>
+            <div class="soc-value text-purple">0.45%</div>
+            <span class="soc-subtext">FPR Threshold Validation</span>
+        </div>
+    </div>
+
+    <!-- LE TABLEAU D'ACCUMULATION DES ALERTES -->
+    <div class="soc-table-container">
+        <div class="soc-table-header">
+            <div class="soc-title-area">
+                <span class="pulse-indicator"></span>
+                <h3>Real-Time Attack Classification Logs (<span id="log-count">0</span>)</h3>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="soc-expert-table">
+                <thead>
+                    <tr>
+                        <th>SOURCE METRIC</th>
+                        <th>ATTACK CLASS (IA)</th>
+                        <th>TARGET ASSET</th>
+                        <th>SEVERITY</th>
+                        <th>CONFIDENCE SCORE</th>
+                    </tr>
+                </thead>
+                <tbody id="history-table-body">
+                    <!-- Les prédictions s'ajoutent ici les unes après les autres à chaque clic -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</section>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    /* REVEAL ANIMATION */
+    const elements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add("active");
+            }
+        });
+    }, { threshold: 0.15 });
+    elements.forEach(el => observer.observe(el));
+
+    /* NAVBAR SCROLL */
+    window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if(window.scrollY > 50){
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+
+    /* AFFICHAGE DU NOM DU FICHIER */
+    const fileInput = document.getElementById("file-input");
+    const fileInfoContainer = document.getElementById("file-info-container");
+    const fileNameText = document.getElementById("file-name-text");
+
+    if (fileInput) {
+        fileInput.addEventListener("change", () => {
+            if (fileInput.files.length > 0) {
+                fileNameText.innerText = fileInput.files[0].name;
+                fileInfoContainer.style.display = "flex";
+            } else {
+                fileInfoContainer.style.display = "none";
+            }
+        });
+    }
+
+    /* ==========================================================
+       DASHBOARD SOC - Initialisation au démarrage (affiché toujours)
+       ========================================================== */
+    const dashboardWrapper = document.getElementById('prediction-history');
+    const kpiTotal = document.getElementById('kpi-total');
+    const kpiAnomalies = document.getElementById('kpi-anomalies');
+    const historyTableBody = document.getElementById('history-table-body');
+    const logCount = document.getElementById('log-count');
+
+    // Charger l'historique depuis LocalStorage
+    let attackHistory = JSON.parse(localStorage.getItem('cyber_sentinel_history')) || [];
+
+    // Fonction pour mettre à jour le dashboard
+    function updateDashboard() {
+        // Afficher le dashboard toujours (même si vide)
+        dashboardWrapper.style.display = 'block';
+
+        // Actualiser les KPIs
+        if (kpiTotal) {
+    kpiTotal.innerText = attackHistory.length;
+}
+
+if (kpiAnomalies) {
+    kpiAnomalies.innerText = attackHistory.filter(item => item.anomaly).length;
+}
+
+if (logCount) {
+    logCount.innerText = attackHistory.length;
+}
+
+        // Vider et reconstruire le tableau
+        if (historyTableBody) {
+            historyTableBody.innerHTML = '';
+
+            if (attackHistory.length === 0) {
+                // Tableau vide - ajouter une ligne indicative
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="6" style="text-align: center; color: #94a3b8; padding: 20px;">
+                        No predictions yet. Upload a CSV and run analysis to see results.
+                    </td>
+                `;
+                historyTableBody.appendChild(row);
+            } else {
+                attackHistory.forEach(item => {
+                    const row = document.createElement('tr');
+                    
+                    const severityColor = item.severity === 'CRITICAL' ? '#ef4444' : 
+                                          item.severity === 'HIGH' ? '#ce3e3e' : 
+                                          '#f4bc63';
+                    
+                    const severityBg = item.severity === 'CRITICAL' ? 'rgba(239, 68, 68, 0.1)' : 
+                                       item.severity === 'HIGH' ? 'rgba(245, 158, 11, 0.1)' : 
+                                       'rgba(59, 130, 246, 0.1)';
+
+                    row.innerHTML = `
+                        <td>${item.preview || 'File Upload'}</td>
+                        <td><span style="color: #8eaee1; font-weight: bold;">${item.attackClass || 'Unknown'}</span></td>
+                        <td>Network Segment A</td>
+                        <td><span style="background: ${severityBg}; color: ${severityColor}; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${item.severity || 'MEDIUM'}</span></td>
+                        <td><span style="color: ${item.probability > 70 ? '#7881b5' : '#3b82f6'}; font-weight: bold;">${item.confidence || item.probability + '%'}</span></td>
+                    `;
+                    
+                    historyTableBody.appendChild(row);
+                });
+            }
+        }
+    }
+
+    // Initialiser le dashboard AU DÉMARRAGE (affiché même vide)
+    updateDashboard();
+
+    /* ==========================================================
+       ANALYSE CSV + ENREGISTREMENT DASHBOARD
+       ========================================================== */
+    const runAnalysisBtn = document.getElementById("run-analysis");
+    
+    if (runAnalysisBtn) {
+        runAnalysisBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            if (!fileInput.files.length) {
+                alert("Veuillez sélectionner un fichier CSV");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("/predict/", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const text = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(text);
+                } catch (errJson) {
+                    console.error("Erreur backend:", text);
+                    alert("Erreur serveur Django (voir console)");
+                    return;
+                }
+
+                // 1. Mise à jour du score et cercle
+                const pourcentage = result.average_probability;
+                document.getElementById("score").innerHTML = pourcentage + "%";
+
+                const cercle = document.getElementById("progress-bar");
+                if (cercle) {
+                    const rayon = 70;
+                    const circonference = 2 * Math.PI * rayon;
+                    const offset = circonference - (pourcentage / 100) * circonference;
+                    cercle.style.strokeDashoffset = offset;
+                    cercle.style.stroke = result.global_threat ? "#ff4d4d" : "#2ed573";
+                }
+
+                // 2. Mise à jour du verdict
+                const titreResultat = document.querySelector(".result-text h4");
+                const descriptionResultat = document.querySelector(".result-text p");
+
+                if (result.global_threat) {
+                    titreResultat.innerHTML = `⚠ ALERT: ${result.attacks} ATTACK(S) DETECTED`;
+                    descriptionResultat.innerHTML = `Analyzed ${result.total_rows} rows. ${result.attacks} malicious traffic pattern(s) found (${result.attack_percentage}% of traffic).`;
+                    titreResultat.style.color = "#ff4d4d";
+                } else {
+                    titreResultat.innerHTML = "✓ ALL TRAFFIC NORMAL";
+                    descriptionResultat.innerHTML = `Analyzed ${result.total_rows} rows. Strictly 0 threats detected.`;
+                    titreResultat.style.color = "#2ed573";
+                }
+
+                // 3. ENREGISTREMENT DANS LE DASHBOARD (si attaque détectée)
+                if (result.global_threat) {
+                    const newRecord = {
+                        
+                        preview: `File: ${fileInput.files[0].name}`,
+                        probability: pourcentage,
+                        anomaly: true,
+                        attackClass: result.attacks > 3 ? 'DoS Attack' : 
+                                     result.attacks > 0 ? 'Probe Attack' : 
+                                     'Unknown Attack',
+                        severity: result.attacks > 5 ? 'CRITICAL' : 
+                                  pourcentage > 80 ? 'HIGH' : 
+                                  'MEDIUM',
+                        confidence: pourcentage + '%'
+                    };
+
+                    attackHistory.unshift(newRecord); // Ajouter au début
+                    localStorage.setItem('cyber_sentinel_history', JSON.stringify(attackHistory));
+                    
+                    // Actualiser le dashboard immédiatement
+                    updateDashboard();
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert("Erreur réseau");
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
