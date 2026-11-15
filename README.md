@@ -14,7 +14,8 @@ Ce projet associe une **étude comparative des techniques de rééquilibrage des
 ---
 
 ## 📸 Aperçu de l'application et des résultats
-
+### 1. Page d'accueil de l'application
+![Page d'accueil](screenshots/01-accueil.png)
 ### Interface de détection des intrusions
 ![Interface de détection](screenshots/02-detection.png)
 
